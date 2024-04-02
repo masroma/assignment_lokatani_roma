@@ -79,23 +79,53 @@ class UserController extends Controller
         
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('user.index');
+        $user = User::findOrFail($id);
+        return view('user.show',compact('user'));
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('user.index');
+        $user = User::findOrFail($id);
+        return view('user.edit',compact('user'));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        return view('user.index');
+        $messages = [
+            'required' => 'Kolom :attribute wajib diisi!',
+            'regex' => 'Kolom :attribute hanya boleh berisi huruf dan angka.'
+        ];
+
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'nullable|regex:/^[a-zA-Z0-9]+$/',
+            'address' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/'
+        ], $messages);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->get('name');
+        $user->phone = $request->get('phone');
+        $user->address = $request->get('address');
+        $user->save();
+        if ($user) {
+            //redirect dengan pesan sukses
+            return redirect()->route('users.index')->with(['success' => 'Data Berhasil Diupdate!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('users.index')->with(['error' => 'Data Gagal Diupdate!']);
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        return view('user.index');
+        $user = User::findOrFail($id)->delete();
+        
+        if ($user) {
+            return redirect()->route('users.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        } else {
+            return redirect()->route('users.index')->with(['error' => 'Data Gagal Dihapus!']);
+        }
     }
 }

@@ -122,7 +122,7 @@
                 })
                 .then((dt) => {
                     if (dt) {
-                        window.location.href = "{{ url('users') }}/" + id + "/delete";
+                        window.location.href = "{{ url('users') }}/" + id;
                     }
                 });
         }
