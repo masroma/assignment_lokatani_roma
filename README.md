@@ -1,9 +1,9 @@
 
 ## Assignment Lokatani CRUD
 
-# Requirment
-php 8
-mysql
+# Persiapan
+- php 8
+- mysql
 
 # buat database
 buat database username, password dan nama database, bisa di mysql workbanch atau phpmyadmin
