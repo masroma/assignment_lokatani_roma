@@ -19,6 +19,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Created At</th>
                                     <th>#</th>
                                 </tr>
                             </thead>
@@ -71,6 +72,11 @@
                         {
                             data: 'phone',
                             name: 'phone'
+                        },
+
+                        {
+                            data: 'tanggal_dibuat',
+                            name: 'tanggal_dibuat'
                         },
 
                       

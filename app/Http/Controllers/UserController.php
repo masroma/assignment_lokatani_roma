@@ -14,6 +14,15 @@ class UserController extends Controller
         try{
             $data = User::all();
             return datatables()->of($data)
+            ->addColumn('tanggal_dibuat', function ($data) {
+                
+                $created_at = $data->created_at;
+                $createdat = \Carbon\Carbon::parse($created_at)->formatLocalized('%d %B %Y %H:%M');
+                
+                // Tampilkan tanggal dalam format Indonesia
+               
+                return $createdat;
+            })
             ->addIndexColumn()
             ->make(true);
         } catch (Exception $e) {
