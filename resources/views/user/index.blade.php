@@ -95,8 +95,11 @@
                                     name: 'id',
                                     render: function(value, param, data) {
                                         return '<div>' +
+                                            '<a class="btn btn-sm btn-info" href="/users/show/' + value +'"><i class="fas fa-eye"></i></a> ' +
                                             '<a class="btn btn-sm btn-success" href="/users/' + value +
                                             '/edit"><i class="fas fa-edit"></i></a> ' +
+                                           
+                                         
                                         
                                             '<button class="btn btn-sm btn-danger" type="button" onClick="deleteConfirm(' +
                                             value + ')"><i class="fas fa-trash"></i></button>' +
