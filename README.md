@@ -17,13 +17,13 @@ ketik composer install atau composer update
 # Setup ENV
 copy paste file .env.example kemudian rename jadi .env
 
-pada bagian 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=lokatani
-DB_USERNAME=root
-DB_PASSWORD=
+pada bagian <br/>
+DB_CONNECTION=mysql <br/>
+DB_HOST=127.0.0.1 <br/>
+DB_PORT=3306 <br/>
+DB_DATABASE=lokatani <br/>
+DB_USERNAME=root <br/>
+DB_PASSWORD= <br/>
 
 silahkan kalian isikan dengan database yang tadi sudah dibuat
 DB_DATABSE isi dengan nama database yang telah kalian buat
