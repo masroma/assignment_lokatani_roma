@@ -1,11 +1,21 @@
 @extends('layouts.default')
 @section('title') Data User @endsection
 @section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 mt-5">
+            <div class="col-sm-12">
+                <h1 class="m-0 text-dark">User</h1>
+            </div>
+           
+        </div>
+    </div>
+</div>
   <div class="content">
     <div class="container-fluid">
         <div class="row mb-4 mt-5">
             <div class="col-md-12">
-                <a href="{{route('users.create')}}" class="btn btn-primary">Tambah User</a>
+                <a href="{{route('users.create')}}" class="btn btn-success">Tambah User</a>
             </div>
         </div>
         <div class="row">
@@ -85,7 +95,7 @@
                                     name: 'id',
                                     render: function(value, param, data) {
                                         return '<div>' +
-                                            '<a class="btn btn-sm btn-primary" href="/users/' + value +
+                                            '<a class="btn btn-sm btn-success" href="/users/' + value +
                                             '/edit"><i class="fas fa-edit"></i></a> ' +
                                         
                                             '<button class="btn btn-sm btn-danger" type="button" onClick="deleteConfirm(' +

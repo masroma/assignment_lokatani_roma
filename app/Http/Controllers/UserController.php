@@ -42,12 +42,41 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.index');
+        return view('user.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view('user.index');
+        $messages = [
+            'required' => 'Kolom :attribute wajib diisi!',
+            'unique' => 'Nilai pada kolom :attribute sudah digunakan.',
+            'email' => 'Kolom :attribute harus memiliki format email.',
+            'regex' => 'Kolom :attribute hanya boleh berisi huruf dan angka.'
+        ];
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'phone' => 'nullable|regex:/^[a-zA-Z0-9]+$/',
+            'address' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/'
+        ], $messages);
+
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->phone = $request->get('phone');
+        $user->address = $request->get('address');
+        $user->save();
+        if ($user) {
+            //redirect dengan pesan sukses
+            return redirect()->route('users.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('users.index')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+        
     }
 
     public function show()
