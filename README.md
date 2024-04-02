@@ -16,6 +16,7 @@ ketik composer install atau composer update
 
 # Setup ENV
 copy paste file .env.example kemudian rename jadi .env
+
 pada bagian 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
