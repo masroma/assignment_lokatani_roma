@@ -2,7 +2,7 @@
 ## Assignment Lokatani CRUD
 
 # Persiapan
-- php 8
+- php 8.2
 - mysql
 
 # buat database
